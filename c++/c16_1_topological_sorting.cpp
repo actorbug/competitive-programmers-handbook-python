@@ -6,7 +6,7 @@ using ll = long long;
 
 namespace {
 	void test(const vector<vector<ll>>& adj) {
-		unordered_map<ll, ll> pos;
+		vector<ll> pos(adj.size());
 		for (auto [i, a] : topological(adj) | views::enumerate)
 			pos[a] = i;
 		for (ll a = 1; a < ssize(adj); ++a) {

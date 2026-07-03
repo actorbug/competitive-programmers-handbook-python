@@ -59,7 +59,7 @@ namespace {
 		else if (a && !b || !a && b)
 			return false;
 		else
-			return equal_tree(a->left, b->left) && equal_tree(a->right, b->right);
+			return a->value == b->value && equal_tree(a->left, b->left) && equal_tree(a->right, b->right);
 	}
 
 	const Tree tree = make_shared<Node>(1, make_shared<Node>(2, make_shared<Node>(4), make_shared<Node>(5, make_shared<Node>(6))), make_shared<Node>(3, nullptr, make_shared<Node>(7)));
