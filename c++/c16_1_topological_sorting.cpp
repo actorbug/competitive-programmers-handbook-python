@@ -8,7 +8,6 @@ namespace {
 	void test(const vector<vector<ll>>& adj) {
 		ll n = ssize(adj);
 		auto ret = topological(adj);
-		EXPECT_EQ(ret | ranges::to<unordered_multiset>(), views::iota(1ll, n) | ranges::to<unordered_multiset>());
 		vector<ll> pos(n);
 		for (auto [i, a] : ret | views::enumerate)
 			pos[a] = i;
@@ -17,6 +16,8 @@ namespace {
 				EXPECT_LT(pos[a], pos[b]);
 			}
 		}
+		ranges::sort(ret);
+		EXPECT_EQ(ret, views::iota(1ll, n) | ranges::to<vector>());
 	}
 }
 
