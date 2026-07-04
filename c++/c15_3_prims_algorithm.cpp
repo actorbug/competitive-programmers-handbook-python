@@ -7,9 +7,10 @@ using ll = long long;
 
 namespace {
 	vector<vector<pair<ll, ll>>> prim(const vector<vector<pair<ll, ll>>>& adj) {
-		if (adj.size() <= 1) return { {} };
-		vector<bool> processed(adj.size());
-		vector<vector<pair<ll, ll>>> ret(adj.size());
+		ll n = ssize(adj);
+		if (n <= 1) return { {} };
+		vector<bool> processed(n);
+		vector<vector<pair<ll, ll>>> ret(n);
 		processed[1] = true;
 		priority_queue<tuple<ll, ll, ll>, vector<tuple<ll, ll, ll>>, greater<>> q;
 		for (auto [c, w] : adj[1])
