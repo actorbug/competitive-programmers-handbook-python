@@ -25,8 +25,11 @@ def topological(adj):
 class Test(unittest.TestCase):
     def assertTopological(self,adj):
         with self.subTest(adj=adj):
-            pos={v:i for i,v in enumerate(topological(adj))}
-            for a in range(1,len(adj)):
+            n=len(adj)
+            ret=topological(adj)
+            self.assertCountEqual(ret, range(1,n))
+            pos={v:i for i,v in enumerate(ret)}
+            for a in range(1,n):
                 for b in adj[a]:
                     self.assertLess(pos[a],pos[b])
     def test(self):

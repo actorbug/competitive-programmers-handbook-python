@@ -6,10 +6,13 @@ using ll = long long;
 
 namespace {
 	void test(const vector<vector<ll>>& adj) {
-		vector<ll> pos(adj.size());
-		for (auto [i, a] : topological(adj) | views::enumerate)
+		ll n = ssize(adj);
+		auto ret = topological(adj);
+		EXPECT_EQ(ret | ranges::to<unordered_multiset>(), views::iota(1ll, n) | ranges::to<unordered_multiset>());
+		vector<ll> pos(n);
+		for (auto [i, a] : ret | views::enumerate)
 			pos[a] = i;
-		for (ll a = 1; a < ssize(adj); ++a) {
+		for (ll a = 1; a < n; ++a) {
 			for (ll b : adj[a]) {
 				EXPECT_LT(pos[a], pos[b]);
 			}
