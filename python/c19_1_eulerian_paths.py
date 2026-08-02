@@ -26,7 +26,7 @@ def existence2(adj,rev=None):
         d[len(rev[e])-len(adj[e])].append(e)
     if len(d[0])==len(adj)-1:
         return (0,0)
-    elif len(d[0])==len(adj)-3 and len(d[1])==1:
+    elif len(d[0])==len(adj)-3 and 1 in d:
         return (d[-1][0],d[1][0])
     else:
         return None

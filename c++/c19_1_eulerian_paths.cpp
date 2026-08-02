@@ -13,10 +13,10 @@ namespace {
 				odd.push_back(i);
 			}
 		}
-		if (odd.size() == 2)
-			return make_pair(odd[0], odd[1]);
-		else if (odd.size() == 0)
+		if (odd.size() == 0)
 			return make_pair(0, 0);
+		else if (odd.size() == 2)
+			return make_pair(odd[0], odd[1]);
 		else
 			return nullopt;
 	}
@@ -26,10 +26,10 @@ namespace {
 		unordered_map<ll, vector<ll>> d;
 		for (ll i = 1; i < ssize(adj); ++i)
 			d[ssize(rev[i]) - ssize(adj[i])].push_back(i);
-		if (d[0].size() == adj.size() - 3 && d.contains(1) && d.contains(-1))
-			return make_pair(d[-1][0], d[1][0]);
-		else if (d[0].size() == adj.size() - 1)
+		if (d[0].size() == adj.size() - 1)
 			return make_pair(0, 0);
+		else if (d[0].size() == adj.size() - 3 && d.contains(1))
+			return make_pair(d[-1][0], d[1][0]);
 		else
 			return nullopt;
 	}

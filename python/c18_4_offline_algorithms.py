@@ -41,9 +41,8 @@ def lca(adj,x,q):
         for u in adj[s]:
             if u!=e:
                 dfs(u,s)
-                v=value[uf.find(s)]
                 uf.unite(u,s)
-                value[uf.find(u)]=v
+                value[uf.find(s)]=s
     dfs(x,0)
     return a
 

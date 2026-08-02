@@ -55,17 +55,17 @@ namespace {
 			}
 			return m;
 		}
-		ll minpos() const {
-			ll k = 1, n = ssize(tree) / 2;
-			while (k < n)
-				k = (tree[k] == tree[2 * k]) ? 2 * k : 2 * k + 1;
-			return k - n;
-		}
 		void add(ll k, ll x) {
 			k += ssize(tree) / 2;
 			tree[k] += x;
 			while ((k /= 2) >= 1)
 				tree[k] = std::min(tree[2 * k], tree[2 * k + 1]);
+		}
+		ll minpos() const {
+			ll k = 1, n = ssize(tree) / 2;
+			while (k < n)
+				k = (tree[k] == tree[2 * k]) ? 2 * k : 2 * k + 1;
+			return k - n;
 		}
 	private:
 		vector<ll> tree;

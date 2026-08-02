@@ -41,12 +41,12 @@ namespace {
 			for (ll i = 1; i < ssize(adj); ++i)
 				value.add(pos[i], val[i]);
 		}
+		void set(ll k, ll x) {
+			value.set(pos[k], x);
+		}
 		ll sum(ll k) const {
 			ll p = pos[k];
 			return value.sum(p + size[p] - 1) - value.sum(p - 1);
-		}
-		void set(ll k, ll x) {
-			value.set(pos[k], x);
 		}
 	private:
 		vector<ll> pos, size;
@@ -75,12 +75,12 @@ namespace {
 				};
 			dfs(x, 0, 0);
 		}
-		ll sum(ll k) const {
-			return value[pos[k]];
-		}
 		void add(ll k, ll x) {
 			ll p = pos[k];
 			value.add(p, p + size[p] - 1, x);
+		}
+		ll sum(ll k) const {
+			return value[pos[k]];
 		}
 	private:
 		vector<ll> pos, size;

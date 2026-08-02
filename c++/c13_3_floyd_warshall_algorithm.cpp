@@ -7,12 +7,12 @@ constexpr ll INF = numeric_limits<ll>::max() / 2;
 
 vector<vector<ll>> floyd_warshall(const vector<vector<ll>>& adj) {
 	ll n = ssize(adj);
-	vector<vector<ll>> distance(n, vector<ll>(n));
+	vector<vector<ll>> distance = adj;
 	for (int i = 1; i < n; ++i) {
 		for (int j = 1; j < n; ++j) {
-			if (i == j) distance[i][j] = 0;
-			else if (adj[i][j]) distance[i][j] = adj[i][j];
-			else distance[i][j] = INF;
+			if (i != j && !adj[i][j]) {
+				distance[i][j] = INF;
+			}
 		}
 	}
 	for (int k = 1; k < n; ++k) {
